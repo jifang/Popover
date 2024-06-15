@@ -614,8 +614,10 @@ private extension Popover {
 
     let fillLayer = CAShapeLayer()
     fillLayer.path = path.cgPath
-    fillLayer.fillRule = CAShapeLayerFillRule.evenOdd
     fillLayer.fillColor = self.blackOverlayColor.cgColor
+    if #available(iOS 12.0, *) {
+      fillLayer.fillRule = CAShapeLayerFillRule.evenOdd
+    }
     self.blackOverlay.layer.addSublayer(fillLayer)
   }
 
